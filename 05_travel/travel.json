@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "description": "underwear",
+    "quantity": 2,
+    "packed": false
+  },
+  {
+    "id": 2,
+    "description": "sleepwear",
+    "quantity": 2,
+    "packed": true
+  },
+  {
+    "id": 3,
+    "description": "shorts",
+    "quantity": 1,
+    "packed": true
+  },
+  {
+    "id": 6,
+    "description": "socks",
+    "quantity": 5,
+    "packed": false
+  },
+  {
+    "id": 7,
+    "description": "t-shirt",
+    "quantity": 4,
+    "packed": false
+  },
+  {
+    "id": 8,
+    "description": "toothbrush",
+    "quantity": 1,
+    "packed": false
+  },
+  {
+    "id": 10,
+    "description": "deodorant",
+    "quantity": 1,
+    "packed": false
+  },
+  {
+    "id": 11,
+    "description": "hair brush",
+    "quantity": 1,
+    "packed": false
+  },
+  {
+    "id": 12,
+    "description": "shampoo",
+    "quantity": 1,
+    "packed": false
+  },
+  {
+    "id": 13,
+    "description": "laptop",
+    "quantity": 1,
+    "packed": false
+  },
+  {
+    "id": 14,
+    "description": "charger",
+    "quantity": 1,
+    "packed": false
+  },
+  {
+    "id": 15,
+    "description": "passport",
+    "quantity": 1,
+    "packed": false
+  }
+]

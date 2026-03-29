@@ -4,14 +4,20 @@ import colors from "./colors";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.back,
+    backgroundColor: colors.primary,
     alignItems: "center",
     justifyContent: "center",
+  },
+  app: {
+    flex: 1,
+    backgroundColor: colors.primary,
+    alignItems: "center",
+    justifyContent: "space-between",
   },
   header: {
     flex: 1,
     width: "100%",
-    padding: 20,
+    padding: 40,
     backgroundColor: colors.primary,
     alignItems: "center",
     justifyContent: "center",
@@ -27,7 +33,6 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: colors.primary,
     flexDirection: "row",
-    gap: 10,
     alignItems: "center",
     justifyContent: "space-around",
   },
