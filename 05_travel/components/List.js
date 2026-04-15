@@ -7,6 +7,7 @@ const List = ({ items, clearList, togglePack, removeItem }) => {
   return (
     <View style={styles.listContainer}>
       <FlatList
+        numColumns={2}
         data={items}
         renderItem={({ item }) => <Item key={item.id} data={item} togglePack={togglePack} removeItem={removeItem} />}
         keyExtractor={(item) => item.id.toString()}

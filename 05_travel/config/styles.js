@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   },
   number: {
     height: 40,
-    fontSize: 18,
+    fontSize: 16,
     width: "15%",
     borderColor: colors.text,
     borderWidth: 1,
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    fontSize: 18,
+    fontSize: 16,
     width: "50%",
     borderColor: colors.text,
     borderWidth: 1,
@@ -113,8 +113,6 @@ const styles = StyleSheet.create({
   list: {
     width: "100%",
     display: "flex",
-    flexDirection: "row",
-    flexWrap: "wrap",
     alignItems: "center",
     justifyContent: "center",
   }
