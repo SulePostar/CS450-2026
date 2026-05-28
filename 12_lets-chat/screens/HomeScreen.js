@@ -1,16 +1,18 @@
 import { useContext } from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native'
 import { AuthenticationContext } from '../context/AuthenticationContext';
-import { auth } from '../firebase/config';
+import Avatar from '../components/Avatar';
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   const { user } = useContext(AuthenticationContext);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Home Screen</Text>
-      <Text style={styles.message}>Welcome, {user?.email}</Text>
-      <Button title="Logout" onPress={() => auth.signOut()} />
+      <Text style={styles.title}>Welcome, {user?.nickname}</Text>
+      <Avatar photo={user?.avatar} />
+      <Text style={styles.message}>Email: {user?.email}</Text>
+      <Text style={styles.message}>Role: {user?.role}</Text>
+      <Button title="Users List" onPress={() => navigation.navigate('UsersList')} />
     </View>
   )
 }

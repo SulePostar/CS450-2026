@@ -14,6 +14,8 @@ import {
   View,
   ImageBackground,
 } from 'react-native';
+import Button from '../components/Button';
+import LinkButton from '../components/LinkButton';
 
 export default function SignupScreen() {
   const [nickname, setNickname] = useState('');
@@ -34,7 +36,7 @@ export default function SignupScreen() {
         userId: user.uid,
         nickname: nickname,
         role: "user",
-        avatar: null
+        avatar: "shadow.jpg"
       });
     } catch (error) {
       console.error('Error signing up:', error);
@@ -94,17 +96,9 @@ export default function SignupScreen() {
                 />
               </View>
 
-              <Pressable onPress={onSignupPress} style={styles.primaryButton}>
-                <Text style={styles.primaryButtonText}>Sign Up</Text>
-              </Pressable>
+              <Button title="Sign Up" onPress={onSignupPress} />
 
-              <View style={styles.row}>
-                <Pressable
-                  onPress={() => navigation.navigate('Login')}
-                >
-                  <Text style={styles.link}>Already have an account? Sign in</Text>
-                </Pressable>
-              </View>
+              <LinkButton onPress={() => navigation.navigate('Login')} labels={['Already have an account? Sign in']} />
 
             </View>
           </KeyboardAvoidingView>
@@ -113,4 +107,3 @@ export default function SignupScreen() {
     </View>
   );
 }
-

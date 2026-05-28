@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import background from '../assets/background.jpg';
 import styles from '../styles/authStyles';
 import { useNavigation } from '@react-navigation/native';
@@ -12,10 +12,15 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import { auth } from '../firebase/config';
+import { auth, db } from '../firebase/config';
+import { query, getDocs, collection, where } from 'firebase/firestore';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import { AuthenticationContext } from '../context/AuthenticationContext';
+import Button from '../components/Button';
+import LinkButton from '../components/LinkButton';
 
 export default function LoginScreen() {
+  const { user, setUser} = useContext(AuthenticationContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
@@ -28,9 +33,20 @@ export default function LoginScreen() {
       return;
     }
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log("User logged in:", user);
+      .then(async (userCredential) => {
+        const currentUser = userCredential.user;
+
+        const docRef = collection(db, 'users');
+        const q = query(docRef, where('userId', '==', currentUser.uid));
+        const querySnapshot = await getDocs(q);
+        const userData = querySnapshot.docs[0].data();
+        setUser({
+          userId: currentUser.uid,
+          email: currentUser.email,
+          nickname: userData.nickname,
+          avatar: userData.avatar,
+          role: userData.role
+        });
       })
       .catch((error) => {
         console.error('Error logging in:', error);
@@ -102,23 +118,11 @@ export default function LoginScreen() {
                 </Pressable>
               </View>
 
-              <Pressable onPress={onLoginPress} style={styles.primaryButton}>
-                <Text style={styles.primaryButtonText}>Login</Text>
-              </Pressable>
+              <Button title="Login" onPress={onLoginPress} />
 
               <View style={[styles.row, { marginTop: 18 }]}>
-                <Pressable
-                  onPress={onForgotPasswordPress}
-                >
-                  <Text style={styles.link}>Forgot</Text>
-                  <Text style={styles.link}>password?</Text>
-                </Pressable>
-                <Pressable
-                  onPress={() => navigation.navigate('Signup')}
-                >
-                  <Text style={styles.link}>Don't have an</Text>
-                  <Text style={styles.link}>account? Sign up!</Text>
-                </Pressable>
+                <LinkButton onPress={onForgotPasswordPress} labels={['Forgot', 'password?']} />
+                <LinkButton onPress={() => navigation.navigate('Signup')} labels={["Don't have an", "account? Sign up!"]} />
               </View>
 
             </View>

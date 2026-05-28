@@ -7,6 +7,8 @@ import Footer from './components/Footer';
 import LoginScreen from './screens/LoginScreen';
 import SignupScreen from './screens/SignupScreen';
 import HomeScreen from './screens/HomeScreen';
+import UsersScreen from './screens/UsersScreen';
+import UserDetails from './screens/UserDetails';
 import { AuthenticationProvider, AuthenticationContext } from './context/AuthenticationContext';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase/config';
@@ -27,6 +29,8 @@ function MainStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="UsersList" component={UsersScreen} />
+      <Stack.Screen name="UserDetails" component={UserDetails} />
     </Stack.Navigator>
   );
 }
